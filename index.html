@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Zone — You Already Know</title>
+<meta name="description" content="Premium Zone — An ultra-exclusive digital sanctuary for the discerning few. If you know, you know.">
+<meta name="theme-color" content="#030303">
+<link rel="canonical" href="https://premiumzone.eu.org">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#030303;--bg2:#070707;--bg3:#0a0a0a;--bg4:#0d0d0d;
+  --border:#111;--border2:#181818;
+  --cream:#f0ebe0;--cream2:#d4cfc4;--cream3:#a09b90;--cream4:#6b6760;--cream5:#3d3a36;
+  --gold:#c4a55a;--gold2:#a8893e;--gold3:#8a7035;--gold4:rgba(196,165,90,.08);
+  --font:'Inter',system-ui,sans-serif;
+  --serif:'Playfair Display',Georgia,serif;
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{font-family:var(--font);background:var(--bg);color:var(--cream);line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+::selection{background:rgba(196,165,90,.2)}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#1a1a1a;border-radius:2px}
+.container{max-width:1200px;margin:0 auto;padding:0 32px}
+
+/* --- NAV --- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:28px 0;transition:all .6s cubic-bezier(.16,1,.3,1)}
+.nav.scrolled{background:rgba(3,3,3,.92);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);border-bottom:1px solid var(--border);padding:18px 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:14px}
+.logo-diamond{width:10px;height:10px;background:var(--gold);transform:rotate(45deg);transition:transform .4s}
+.nav-logo:hover .logo-diamond{transform:rotate(225deg)}
+.logo-text{font-size:.7rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:40px}
+.nav-links a{font-size:.68rem;color:var(--cream4);letter-spacing:.12em;text-transform:uppercase;transition:color .3s;font-weight:400}
+.nav-links a:hover{color:var(--cream2)}
+.nav-enter{padding:10px 28px;border:1px solid rgba(196,165,90,.2);background:transparent;color:var(--gold);font-size:.65rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:all .4s;font-family:var(--font)}
+.nav-enter:hover{background:rgba(196,165,90,.06);border-color:rgba(196,165,90,.35)}
+.mob-btn{display:none;background:none;border:none;color:var(--cream);cursor:pointer}
+.mob-btn svg{width:22px;height:22px}
+
+/* --- HERO --- */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-mesh{position:absolute;inset:0;width:100%;height:100%;opacity:.18;pointer-events:none}
+.hero-bg .glow1{position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:900px;height:700px;background:radial-gradient(ellipse,rgba(196,165,90,.03) 0%,transparent 60%);pointer-events:none}
+.hero-bg .glow2{position:absolute;bottom:-20%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(196,165,90,.02) 0%,transparent 60%);pointer-events:none}
+.hero-bg .vline{position:absolute;top:0;bottom:0;left:50%;width:1px;background:linear-gradient(to bottom,transparent 5%,rgba(196,165,90,.04) 30%,rgba(196,165,90,.04) 70%,transparent 95%)}
+/* Decorative corner lines */
+.hero-corner{position:absolute;width:80px;height:80px;pointer-events:none}
+.hero-corner.tl{top:60px;left:40px;border-top:1px solid rgba(196,165,90,.08);border-left:1px solid rgba(196,165,90,.08)}
+.hero-corner.tr{top:60px;right:40px;border-top:1px solid rgba(196,165,90,.08);border-right:1px solid rgba(196,165,90,.08)}
+.hero-corner.bl{bottom:40px;left:40px;border-bottom:1px solid rgba(196,165,90,.08);border-left:1px solid rgba(196,165,90,.08)}
+.hero-corner.br{bottom:40px;right:40px;border-bottom:1px solid rgba(196,165,90,.08);border-right:1px solid rgba(196,165,90,.08)}
+
+.hero-content{position:relative;z-index:1;text-align:center;max-width:760px;padding:120px 24px}
+.hero-eyebrow{font-size:.6rem;font-weight:400;color:var(--gold2);letter-spacing:.3em;text-transform:uppercase;margin-bottom:48px;display:flex;align-items:center;justify-content:center;gap:16px}
+.hero-eyebrow .line{width:40px;height:1px;background:var(--gold2);opacity:.4}
+.hero h1{font-family:var(--serif);font-size:clamp(2.8rem,7vw,5.5rem);font-weight:400;line-height:1.06;letter-spacing:-.01em;margin-bottom:36px}
+.hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--gold),#dcc67a,var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:.95rem;color:var(--cream3);max-width:420px;margin:0 auto 56px;line-height:1.9;font-weight:200}
+.hero-cta{display:inline-flex;align-items:center;gap:12px;padding:18px 52px;background:var(--gold);color:#030303;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;border:none;cursor:pointer;font-family:var(--font);transition:all .5s cubic-bezier(.16,1,.3,1)}
+.hero-cta:hover{background:#d4b66a;transform:translateY(-3px);box-shadow:0 16px 50px rgba(196,165,90,.15)}
+.hero-cta svg{width:16px;height:16px}
+.hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--cream5);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--cream5),transparent);animation:scrollpulse 2s ease-in-out infinite}
+@keyframes scrollpulse{0%,100%{opacity:.3;height:40px}50%{opacity:.8;height:50px}}
+
+/* --- LUXURY VISUAL STRIP --- */
+.visual-strip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
+.vis-panel{position:relative;aspect-ratio:1/1;overflow:hidden;border-right:1px solid var(--border);display:flex;align-items:center;justify-content:center;background:var(--bg2);transition:background .5s}
+.vis-panel:last-child{border-right:none}
+.vis-panel:hover{background:var(--bg3)}
+.vis-panel:hover .vis-icon{transform:scale(1.08);opacity:.6}
+.vis-icon{transition:all .6s cubic-bezier(.16,1,.3,1);opacity:.45}
+.vis-label{position:absolute;bottom:20px;left:0;right:0;text-align:center;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream4);font-weight:400}
+
+/* --- STATS --- */
+.stats{padding:56px 0;border-bottom:1px solid var(--border)}
+.stats-inner{display:flex;justify-content:center;gap:100px}
+.stat{text-align:center}
+.stat-num{font-family:var(--serif);font-size:2rem;font-weight:400;color:var(--cream)}
+.stat-lbl{font-size:.6rem;color:var(--cream5);letter-spacing:.16em;text-transform:uppercase;margin-top:6px}
+
+/* --- SECTION BASE --- */
+.section{padding:90px 0}
+.section-tag{font-size:.58rem;font-weight:400;color:var(--gold2);letter-spacing:.24em;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:14px}
+.section-tag::before{content:'';width:28px;height:1px;background:var(--gold2);opacity:.5}
+.section-heading{font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);font-weight:400;line-height:1.15;margin-bottom:14px}
+.section-heading em{font-style:italic;color:var(--gold)}
+.section-sub{color:var(--cream3);max-width:460px;font-weight:200;line-height:1.85;font-size:.9rem}
+
+/* --- ABOUT / PILLARS --- */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:48px;background:var(--border)}
+.pillar{padding:56px 40px;background:var(--bg);transition:all .5s;position:relative;overflow:hidden}
+.pillar:hover{background:var(--bg2)}
+.pillar::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(196,165,90,.1),transparent);opacity:0;transition:opacity .5s}
+.pillar:hover::before{opacity:1}
+.pillar-num{font-family:var(--serif);font-size:3rem;color:rgba(196,165,90,.25);margin-bottom:28px;font-weight:400;line-height:1}
+.pillar h3{font-size:.85rem;font-weight:500;letter-spacing:.06em;margin-bottom:14px}
+.pillar p{font-size:.82rem;color:var(--cream4);line-height:1.75;font-weight:200}
+
+/* --- LIFESTYLE SECTION --- */
+.lifestyle{padding:0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.life-grid{display:grid;grid-template-columns:1fr 1fr}
+.life-visual{position:relative;min-height:520px;background:var(--bg2);display:flex;align-items:center;justify-content:center;overflow:hidden;border-right:1px solid var(--border)}
+.life-visual .big-icon{opacity:.35}
+.life-copy{display:flex;flex-direction:column;justify-content:center;padding:80px 72px}
+.life-copy .section-tag{margin-bottom:20px}
+.life-copy .section-heading{margin-bottom:20px}
+.life-copy .section-sub{margin-bottom:40px}
+.life-features{display:flex;flex-direction:column;gap:20px}
+.life-feat{display:flex;align-items:flex-start;gap:16px;font-size:.82rem;color:var(--cream3);font-weight:200;line-height:1.6}
+.life-feat .feat-dash{color:var(--gold2);flex-shrink:0;font-weight:400}
+
+/* --- QUOTE --- */
+.quote-section{padding:72px 0;text-align:center;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg2)}
+.quote-mark{font-family:var(--serif);font-size:4rem;color:rgba(196,165,90,.12);line-height:1;margin-bottom:12px}
+.quote-text{font-family:var(--serif);font-size:clamp(1.15rem,2.3vw,1.6rem);font-style:italic;line-height:1.7;max-width:600px;margin:0 auto 20px;font-weight:400;color:var(--cream2)}
+.quote-attr{font-size:.65rem;color:var(--cream5);letter-spacing:.14em;text-transform:uppercase}
+
+/* --- TIERS (no pricing) --- */
+.tiers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:48px;background:var(--border)}
+.tier{padding:56px 40px;background:var(--bg);transition:all .5s;position:relative}
+.tier:hover{background:var(--bg2)}
+.tier.featured{background:var(--bg3)}
+.tier.featured::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 10%,var(--gold) 50%,transparent 90%)}
+.tier-name{font-size:.6rem;font-weight:500;color:var(--gold2);letter-spacing:.22em;text-transform:uppercase;margin-bottom:20px}
+.tier-title{font-family:var(--serif);font-size:1.8rem;font-weight:400;margin-bottom:10px;line-height:1.2}
+.tier-desc{font-size:.78rem;color:var(--cream4);margin-bottom:36px;font-weight:200;line-height:1.7}
+.tier-list{list-style:none;display:flex;flex-direction:column;gap:16px;margin-bottom:40px}
+.tier-list li{display:flex;align-items:flex-start;gap:14px;font-size:.82rem;color:var(--cream3);font-weight:200;line-height:1.5}
+.tier-list li::before{content:'\2014';color:var(--gold2);flex-shrink:0}
+.tier-btn{display:block;width:100%;padding:15px;text-align:center;font-size:.65rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;transition:all .4s;border:1px solid var(--border2);background:transparent;color:var(--cream4);cursor:pointer;font-family:var(--font)}
+.tier-btn:hover{border-color:var(--cream5);color:var(--cream2)}
+.tier.featured .tier-btn{background:var(--gold);color:#030303;border-color:var(--gold)}
+.tier.featured .tier-btn:hover{background:#d4b66a}
+
+/* --- VOICES --- */
+.voices-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:48px;background:var(--border)}
+.voice{padding:52px 44px;background:var(--bg);transition:background .5s}
+.voice:hover{background:var(--bg2)}
+.voice-text{font-family:var(--serif);font-size:1rem;font-style:italic;line-height:1.75;margin-bottom:28px;color:var(--cream2);font-weight:400}
+.voice-who{font-size:.65rem;color:var(--cream5);letter-spacing:.1em;text-transform:uppercase}
+.voice-who span{color:var(--cream4);text-transform:none;letter-spacing:0}
+
+/* --- CTA --- */
+.cta{padding:100px 0;text-align:center;position:relative;overflow:hidden}
+.cta .glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:500px;background:radial-gradient(ellipse,rgba(196,165,90,.03),transparent 60%);pointer-events:none}
+.cta-content{position:relative;z-index:1}
+.cta .section-heading{max-width:540px;margin:0 auto 18px}
+.cta .section-sub{max-width:380px;margin:0 auto 40px;text-align:center}
+.cta-note{font-size:.65rem;color:var(--cream5);margin-top:24px;font-weight:200;letter-spacing:.06em}
+
+/* --- FOOTER --- */
+.footer{border-top:1px solid var(--border);padding:44px 0}
+.footer-inner{display:flex;align-items:center;justify-content:space-between}
+.footer-left{display:flex;align-items:center;gap:14px;font-size:.7rem;color:var(--cream5);font-weight:200}
+.footer-left .logo-diamond{width:6px;height:6px}
+.footer-links{display:flex;gap:28px}
+.footer-links a{font-size:.62rem;color:var(--cream5);letter-spacing:.1em;text-transform:uppercase;transition:color .3s}
+.footer-links a:hover{color:var(--cream3)}
+.footer-socials{display:flex;gap:18px}
+.footer-socials a{color:var(--cream5);transition:color .3s}
+.footer-socials a:hover{color:var(--cream3)}
+.footer-socials svg{width:15px;height:15px}
+
+/* --- ANIMATIONS --- */
+.rv{opacity:0;transform:translateY(22px);transition:all .9s cubic-bezier(.16,1,.3,1)}
+.rv.vis{opacity:1;transform:translateY(0)}
+.rv-d1{transition-delay:.1s}.rv-d2{transition-delay:.2s}.rv-d3{transition-delay:.3s}
+.rv-d4{transition-delay:.4s}.rv-d5{transition-delay:.5s}
+
+/* --- MOBILE MENU --- */
+.mob-menu{display:none;position:fixed;inset:0;z-index:199;background:rgba(3,3,3,.98);backdrop-filter:blur(30px);flex-direction:column;align-items:center;justify-content:center;gap:40px}
+.mob-menu.open{display:flex}
+.mob-menu a{font-size:.8rem;color:var(--cream3);letter-spacing:.1em;text-transform:uppercase;transition:color .3s}
+.mob-menu a:hover{color:var(--cream)}
+.mob-close{position:absolute;top:28px;right:28px;background:none;border:none;color:var(--cream);cursor:pointer}
+.mob-close svg{width:22px;height:22px}
+
+/* --- RESPONSIVE --- */
+@media(max-width:1024px){
+  .pillars,.tiers-grid{grid-template-columns:1fr 1fr}
+  .stats-inner{gap:48px}
+  .life-copy{padding:56px 44px}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .mob-btn{display:block}
+  .container{padding:0 20px}
+  .visual-strip{grid-template-columns:1fr 1fr}
+  .vis-panel{aspect-ratio:4/3}
+  .pillars,.tiers-grid,.voices-grid{grid-template-columns:1fr}
+  .pillar{padding:40px 28px}
+  .tier{padding:40px 28px}
+  .voice{padding:40px 28px}
+  .life-grid{grid-template-columns:1fr}
+  .life-visual{min-height:260px;border-right:none;border-bottom:1px solid var(--border)}
+  .life-copy{padding:40px 24px}
+  .life-copy .section-heading{font-size:clamp(1.6rem,5vw,2.2rem)}
+  .stats-inner{flex-direction:row;flex-wrap:wrap;gap:20px;justify-content:space-around}
+  .stat{flex:0 0 40%}
+  .section{padding:64px 0}
+  .section-heading{font-size:clamp(1.6rem,5vw,2.4rem)}
+  .pillars,.tiers-grid,.voices-grid{margin-top:36px}
+  .cta{padding:72px 0}
+  .quote-section{padding:56px 0}
+  .quote-text{font-size:clamp(1rem,3.5vw,1.35rem);padding:0 8px}
+  .hero{min-height:100svh;padding:100px 16px}
+  .hero h1{font-size:clamp(2.2rem,8vw,3.2rem)}
+  .hero-sub{font-size:.88rem}
+  .hero-cta{padding:16px 36px;font-size:.7rem;width:100%;justify-content:center}
+  .btn-outline{width:100%;justify-content:center}
+  .footer-inner{flex-direction:column;gap:20px;text-align:center}
+  .footer-links{flex-wrap:wrap;justify-content:center;gap:20px}
+  .hero-corner{display:none}
+  .hero-scroll{bottom:24px}
+  .tier-title{font-size:1.5rem}
+}
+@media(max-width:480px){
+  .visual-strip{grid-template-columns:1fr 1fr}
+  .vis-panel{aspect-ratio:1/1}
+  .vis-icon{transform:scale(.85)}
+  .hero h1{font-size:clamp(2rem,9vw,2.8rem)}
+  .section{padding:52px 0}
+  .cta{padding:56px 0}
+  .pillar-num{font-size:2.2rem;margin-bottom:18px}
+  .pillar{padding:32px 24px}
+  .tier{padding:36px 24px}
+  .voice{padding:32px 20px}
+  .stats-inner{gap:16px}
+  .stat-num{font-size:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo"><div class="logo-diamond"></div><span class="logo-text">Premium Zone</span></a>
+    <div class="nav-links">
+      <a href="#about">The Standard</a>
+      <a href="#lifestyle">Lifestyle</a>
+      <a href="#membership">Membership</a>
+      <a href="#voices">Voices</a>
+      <button class="nav-enter" onclick="document.getElementById('join').scrollIntoView({behavior:'smooth'})">Enter</button>
+    </div>
+    <button class="mob-btn" onclick="document.getElementById('mm').classList.add('open')" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mm">
+  <button class="mob-close" onclick="document.getElementById('mm').classList.remove('open')" aria-label="Close">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <a href="#about" onclick="document.getElementById('mm').classList.remove('open')">The Standard</a>
+  <a href="#lifestyle" onclick="document.getElementById('mm').classList.remove('open')">Lifestyle</a>
+  <a href="#membership" onclick="document.getElementById('mm').classList.remove('open')">Membership</a>
+  <a href="#voices" onclick="document.getElementById('mm').classList.remove('open')">Voices</a>
+  <button class="hero-cta" onclick="document.getElementById('mm').classList.remove('open');document.getElementById('join').scrollIntoView({behavior:'smooth'})" style="margin-top:16px">Request Access</button>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <canvas id="mesh" class="hero-mesh"></canvas>
+    <div class="glow1"></div>
+    <div class="glow2"></div>
+    <div class="vline"></div>
+  </div>
+  <div class="hero-corner tl"></div>
+  <div class="hero-corner tr"></div>
+  <div class="hero-corner bl"></div>
+  <div class="hero-corner br"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow rv"><span class="line"></span>Est. 2024 &middot; Invitation Only<span class="line"></span></div>
+    <h1 class="rv rv-d1">Welcome to<br>the <em>Premium</em> Zone</h1>
+    <p class="hero-sub rv rv-d2">A members-only sanctuary for the select few who live without compromise. Curated access. Elevated standards. Absolute discretion.</p>
+    <button class="hero-cta rv rv-d3" onclick="document.getElementById('join').scrollIntoView({behavior:'smooth'})">
+      Request Access
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+    </button>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- LUXURY VISUAL STRIP -->
+<div class="visual-strip">
+  <!-- WINE GLASS -->
+  <div class="vis-panel">
+    <svg class="vis-icon" width="80" height="140" viewBox="0 0 80 140" fill="none" style="color:var(--gold)">
+      <path d="M25 5h30l-2 50c0 14-10 24-13 26v44h20v8H20v-8h20V81c-3-2-13-12-13-26L25 5z" stroke="currentColor" stroke-width="1.2" fill="none" opacity=".9"/>
+      <ellipse cx="40" cy="8" rx="14" ry="3" stroke="currentColor" stroke-width="1" fill="none" opacity=".5"/>
+      <path d="M30 30c4 2 16 2 20 0" stroke="currentColor" stroke-width=".8" opacity=".4"/>
+    </svg>
+    <div class="vis-label">Fine Taste</div>
+  </div>
+  <!-- PRIVATE JET -->
+  <div class="vis-panel">
+    <svg class="vis-icon" width="140" height="80" viewBox="0 0 140 80" fill="none" style="color:var(--gold)">
+      <path d="M10 44l40-6 14-28 6 0 -6 28 50-3c8 0 16 3 16 4s-8 4-16 4l-50-3 6 28h-6l-14-28-40-6z" stroke="currentColor" stroke-width="1.2" fill="none" opacity=".9"/>
+      <line x1="64" y1="10" x2="64" y2="70" stroke="currentColor" stroke-width=".8" opacity=".35"/>
+      <circle cx="64" cy="40" r="2.5" fill="currentColor" opacity=".3"/>
+    </svg>
+    <div class="vis-label">Private Travel</div>
+  </div>
+  <!-- GENTLEMAN / SUIT -->
+  <div class="vis-panel">
+    <svg class="vis-icon" width="80" height="140" viewBox="0 0 80 140" fill="none" style="color:var(--gold)">
+      <circle cx="40" cy="24" r="14" stroke="currentColor" stroke-width="1.2" fill="none" opacity=".85"/>
+      <path d="M20 50c0-4 8-10 20-10s20 6 20 10v6H20v-6z" stroke="currentColor" stroke-width="1.2" fill="none" opacity=".85"/>
+      <path d="M24 56l-8 78h8l10-60 6 8 6-8 10 60h8l-8-78" stroke="currentColor" stroke-width="1.2" fill="none" opacity=".85"/>
+      <path d="M36 56l4 14 4-14" stroke="currentColor" stroke-width=".9" opacity=".5"/>
+      <line x1="40" y1="70" x2="40" y2="100" stroke="currentColor" stroke-width=".6" opacity=".35"/>
+    </svg>
+    <div class="vis-label">The Gentleman</div>
+  </div>
+  <!-- DIAMOND -->
+  <div class="vis-panel">
+    <svg class="vis-icon" width="100" height="100" viewBox="0 0 100 100" fill="none" style="color:var(--gold)">
+      <polygon points="50,8 90,36 50,92 10,36" stroke="currentColor" stroke-width="1.2" fill="none" opacity=".85"/>
+      <polyline points="10,36 50,44 90,36" stroke="currentColor" stroke-width=".8" fill="none" opacity=".45"/>
+      <line x1="50" y1="44" x2="50" y2="92" stroke="currentColor" stroke-width=".8" opacity=".35"/>
+      <polyline points="30,8 36,36" stroke="currentColor" stroke-width=".6" opacity=".3"/>
+      <polyline points="70,8 64,36" stroke="currentColor" stroke-width=".6" opacity=".3"/>
+      <line x1="10" y1="36" x2="90" y2="36" stroke="currentColor" stroke-width=".8" opacity=".5"/>
+    </svg>
+    <div class="vis-label">Rare Access</div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat rv"><div class="stat-num">2,400+</div><div class="stat-lbl">Members Worldwide</div></div>
+    <div class="stat rv rv-d1"><div class="stat-num">47</div><div class="stat-lbl">Countries</div></div>
+    <div class="stat rv rv-d2"><div class="stat-num">99.8%</div><div class="stat-lbl">Retention</div></div>
+    <div class="stat rv rv-d3"><div class="stat-num">&infin;</div><div class="stat-lbl">Possibilities</div></div>
+  </div>
+</div>
+
+<!-- ABOUT / PILLARS -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-tag rv">The Standard</div>
+    <h2 class="section-heading rv">Six pillars.<br>Zero <em>compromise</em>.</h2>
+    <p class="section-sub rv">Every element exists because our members demanded it. We don't do volume. We do value.</p>
+    <div class="pillars">
+      <div class="pillar rv">
+        <div class="pillar-num">I</div>
+        <h3>The Vault</h3>
+        <p>Curated premium resources, tools, and frameworks. Refreshed monthly. Built for execution — not decoration.</p>
+      </div>
+      <div class="pillar rv rv-d1">
+        <div class="pillar-num">II</div>
+        <h3>Inner Circle</h3>
+        <p>A private network of vetted individuals. No noise, no self-promotion. Sharp minds exchanging real value.</p>
+      </div>
+      <div class="pillar rv rv-d2">
+        <div class="pillar-num">III</div>
+        <h3>First Access</h3>
+        <p>See it before the world does. Every drop, feature, and partnership — members always know first.</p>
+      </div>
+      <div class="pillar rv rv-d3">
+        <div class="pillar-num">IV</div>
+        <h3>The Briefing</h3>
+        <p>Weekly intelligence. Curated signals from the noise — what matters, what's next, what to ignore.</p>
+      </div>
+      <div class="pillar rv rv-d4">
+        <div class="pillar-num">V</div>
+        <h3>Concierge</h3>
+        <p>White-glove support with guaranteed response. You're not a ticket number. You're a member.</p>
+      </div>
+      <div class="pillar rv rv-d5">
+        <div class="pillar-num">VI</div>
+        <h3>Private Events</h3>
+        <p>Intimate masterclasses, gatherings, and sessions designed to sharpen your edge and expand your circle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIFESTYLE -->
+<section class="lifestyle" id="lifestyle">
+  <div class="life-grid">
+    <div class="life-visual">
+      <!-- Large decorative luxury scene SVG -->
+      <svg class="big-icon" width="320" height="320" viewBox="0 0 320 320" fill="none" style="color:var(--gold)">
+        <!-- Skyline silhouette -->
+        <rect x="40" y="180" width="24" height="100" fill="currentColor" opacity=".5"/>
+        <rect x="70" y="140" width="20" height="140" fill="currentColor" opacity=".45"/>
+        <rect x="96" y="160" width="28" height="120" fill="currentColor" opacity=".48"/>
+        <rect x="130" y="120" width="22" height="160" fill="currentColor" opacity=".55"/>
+        <rect x="158" y="100" width="30" height="180" fill="currentColor" opacity=".52"/>
+        <rect x="194" y="130" width="20" height="150" fill="currentColor" opacity=".45"/>
+        <rect x="220" y="150" width="26" height="130" fill="currentColor" opacity=".48"/>
+        <rect x="252" y="170" width="22" height="110" fill="currentColor" opacity=".4"/>
+        <!-- Building windows -->
+        <rect x="164" y="110" width="4" height="6" fill="currentColor" opacity=".7"/>
+        <rect x="172" y="110" width="4" height="6" fill="currentColor" opacity=".5"/>
+        <rect x="164" y="122" width="4" height="6" fill="currentColor" opacity=".6"/>
+        <rect x="172" y="122" width="4" height="6" fill="currentColor" opacity=".7"/>
+        <rect x="164" y="134" width="4" height="6" fill="currentColor" opacity=".4"/>
+        <rect x="136" y="130" width="3" height="5" fill="currentColor" opacity=".6"/>
+        <rect x="143" y="130" width="3" height="5" fill="currentColor" opacity=".5"/>
+        <rect x="136" y="142" width="3" height="5" fill="currentColor" opacity=".7"/>
+        <rect x="143" y="142" width="3" height="5" fill="currentColor" opacity=".4"/>
+        <rect x="76" y="150" width="3" height="5" fill="currentColor" opacity=".5"/>
+        <rect x="76" y="162" width="3" height="5" fill="currentColor" opacity=".6"/>
+        <rect x="82" y="150" width="3" height="5" fill="currentColor" opacity=".4"/>
+        <!-- Moon -->
+        <circle cx="250" cy="60" r="20" fill="currentColor" opacity=".18"/>
+        <circle cx="256" cy="56" r="18" fill="#070707"/>
+        <!-- Stars -->
+        <circle cx="80" cy="40" r="1.8" fill="currentColor" opacity=".5"/>
+        <circle cx="140" cy="30" r="1.3" fill="currentColor" opacity=".4"/>
+        <circle cx="200" cy="50" r="1.5" fill="currentColor" opacity=".45"/>
+        <circle cx="110" cy="70" r="1.2" fill="currentColor" opacity=".35"/>
+        <circle cx="60" cy="60" r="1" fill="currentColor" opacity=".3"/>
+        <circle cx="180" cy="35" r="1" fill="currentColor" opacity=".35"/>
+        <!-- Ground line -->
+        <line x1="20" y1="280" x2="300" y2="280" stroke="currentColor" stroke-width=".5" opacity=".25"/>
+        <!-- Car silhouette at bottom -->
+        <path d="M80 278c4-12 16-20 30-20h100c14 0 26 8 30 20H80z" fill="currentColor" opacity=".25"/>
+        <ellipse cx="120" cy="282" rx="10" ry="10" fill="currentColor" opacity=".15"/>
+        <ellipse cx="200" cy="282" rx="10" ry="10" fill="currentColor" opacity=".15"/>
+        <rect x="75" y="278" width="170" height="6" rx="3" fill="currentColor" opacity=".18"/>
+      </svg>
+    </div>
+    <div class="life-copy">
+      <div class="section-tag rv">The Lifestyle</div>
+      <h2 class="section-heading rv">Designed for those<br>who <em>live</em> differently.</h2>
+      <p class="section-sub rv">Premium Zone isn't just a membership. It's a way of operating — with access, taste, and standards that the ordinary world doesn't understand.</p>
+      <div class="life-features">
+        <div class="life-feat rv rv-d1"><span class="feat-dash">&mdash;</span>Curated experiences across travel, culture, and business</div>
+        <div class="life-feat rv rv-d2"><span class="feat-dash">&mdash;</span>Connections with individuals who move markets, not just attend them</div>
+        <div class="life-feat rv rv-d3"><span class="feat-dash">&mdash;</span>Resources that compound — every month more valuable than the last</div>
+        <div class="life-feat rv rv-d4"><span class="feat-dash">&mdash;</span>Absolute discretion. What happens in the Zone stays in the Zone</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-section">
+  <div class="container">
+    <div class="quote-mark rv">&ldquo;</div>
+    <p class="quote-text rv">Luxury is not about what you have.<br>It's about what you no longer need to explain.</p>
+    <p class="quote-attr rv rv-d1">&mdash; The Ethos of the Zone</p>
+  </div>
+</div>
+
+<!-- MEMBERSHIP (no pricing) -->
+<section class="section" id="membership">
+  <div class="container">
+    <div class="section-tag rv">Membership</div>
+    <h2 class="section-heading rv">Three circles.<br>One <em>standard</em>.</h2>
+    <p class="section-sub rv">Every tier opens the door. The depth of the experience is yours to choose.</p>
+    <div class="tiers-grid">
+      <div class="tier rv">
+        <div class="tier-name">Observer</div>
+        <div class="tier-title" style="font-family:var(--serif)">A Glimpse</div>
+        <div class="tier-desc">Step inside. See what others can't.</div>
+        <ul class="tier-list">
+          <li>Community read access</li>
+          <li>Weekly intelligence brief</li>
+          <li>Public resource library</li>
+          <li>Event announcements</li>
+        </ul>
+        <button class="tier-btn">Enter as Observer</button>
+      </div>
+      <div class="tier featured rv rv-d1">
+        <div class="tier-name">Member</div>
+        <div class="tier-title" style="font-family:var(--serif)">Full Access</div>
+        <div class="tier-desc">The complete Premium Zone experience.</div>
+        <ul class="tier-list">
+          <li>Everything in Observer</li>
+          <li>The Vault — full library</li>
+          <li>Inner Circle community</li>
+          <li>Monthly live sessions</li>
+          <li>Concierge support</li>
+        </ul>
+        <button class="tier-btn">Become a Member</button>
+      </div>
+      <div class="tier rv rv-d2">
+        <div class="tier-name">Founder</div>
+        <div class="tier-title" style="font-family:var(--serif)">The Apex</div>
+        <div class="tier-desc">For those who demand everything.</div>
+        <ul class="tier-list">
+          <li>Everything in Member</li>
+          <li>1-on-1 strategy sessions</li>
+          <li>First access to all drops</li>
+          <li>Private Founder events</li>
+          <li>Founder insignia &amp; recognition</li>
+        </ul>
+        <button class="tier-btn">Claim Founder</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOICES -->
+<section class="section" id="voices" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <div class="section-tag rv">Voices</div>
+    <h2 class="section-heading rv">They don't review us.<br>They <em>stay</em>.</h2>
+    <p class="section-sub rv">That says more than any testimonial ever could.</p>
+    <div class="voices-grid">
+      <div class="voice rv">
+        <p class="voice-text">"I've been in dozens of communities. This is the only one where I show up every single day. The signal-to-noise ratio is unmatched."</p>
+        <p class="voice-who">A.K. &mdash; <span>Founder &amp; Creator</span></p>
+      </div>
+      <div class="voice rv rv-d1">
+        <p class="voice-text">"The weekly briefing alone replaced three newsletters and two podcasts. Everything I need, nothing I don't."</p>
+        <p class="voice-who">S.M. &mdash; <span>Design Director</span></p>
+      </div>
+      <div class="voice rv rv-d2">
+        <p class="voice-text">"It feels like being part of something that hasn't been named yet. Exclusive without being exclusionary. Incredibly rare."</p>
+        <p class="voice-who">J.R. &mdash; <span>Growth Lead</span></p>
+      </div>
+      <div class="voice rv rv-d3">
+        <p class="voice-text">"One Founder session gave me more clarity than six months of conferences. Not even close."</p>
+        <p class="voice-who">D.L. &mdash; <span>Strategy Partner</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="join">
+  <div class="glow"></div>
+  <div class="cta-content">
+    <div class="section-tag rv" style="justify-content:center">The Door Is Open</div>
+    <h2 class="section-heading rv" style="text-align:center">You've read this far.<br><em>That says everything.</em></h2>
+    <p class="section-sub rv" style="text-align:center;margin-left:auto;margin-right:auto">Most people scroll past. You didn't. The Zone is waiting.</p>
+    <div class="rv rv-d1" style="text-align:center">
+      <button class="hero-cta" style="padding:20px 56px">
+        Request Access
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="width:16px;height:16px"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+      </button>
+      <p class="cta-note">No spam. No gimmicks. Just the Zone.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-left"><div class="logo-diamond"></div>&copy; 2026 Premium Zone</div>
+    <div class="footer-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="footer-socials">
+      <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      <a href="#" aria-label="Discord"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.79 19.79 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.865-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.618-1.25.077.077 0 00-.078-.037A19.74 19.74 0 003.677 4.37a.07.07 0 00-.032.028C.533 9.046-.32 13.58.099 18.058a.082.082 0 00.031.056 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.11 13.11 0 01-1.872-.892.077.077 0 01-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 01.078-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.009c.12.1.246.198.373.292a.077.077 0 01-.006.127 12.3 12.3 0 01-1.873.892.076.076 0 00-.041.107c.36.698.772 1.363 1.225 1.993a.076.076 0 00.084.029 19.84 19.84 0 006.002-3.03.077.077 0 00.031-.055c.5-5.177-.838-9.674-3.549-13.66a.06.06 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.086-2.157-2.42 0-1.333.956-2.418 2.157-2.418 1.21 0 2.176 1.095 2.157 2.419 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.42 0-1.333.955-2.418 2.157-2.418 1.21 0 2.176 1.095 2.157 2.419 0 1.333-.946 2.418-2.157 2.418z"/></svg></a>
+      <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){var n=document.getElementById('nav');window.addEventListener('scroll',function(){window.scrollY>50?n.classList.add('scrolled'):n.classList.remove('scrolled')},{passive:true})})();
+(function(){var e=document.querySelectorAll('.rv');if(!e.length)return;if('IntersectionObserver'in window){var o=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');o.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -50px 0px'});e.forEach(function(el){o.observe(el)})}else e.forEach(function(el){el.classList.add('vis')})})();
+</script>
+</body>
+</html>
